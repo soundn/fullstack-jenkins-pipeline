@@ -93,13 +93,13 @@ WSGI_APPLICATION = "Computex.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "computex",
-        "USER": "admin",
-        "PASSWORD": "12345",
-        "HOST": "127.0.0.1",
-        "PORT": "5432"
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('PGDATABASE', 'computex'),
+        'USER': os.environ.get('PGUSER', 'admin'),
+        'PASSWORD': os.environ.get('PGPASSWORD'),
+        'HOST': os.environ.get('PGHOST', 'postgres-cluster-ip-service'),
+        'PORT': os.environ.get('PGPORT', '5432'),
     }
 }
 
